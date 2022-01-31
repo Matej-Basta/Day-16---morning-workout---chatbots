@@ -3,17 +3,13 @@ const conversation_json =
 
 const parsedJSON = JSON.parse(conversation_json);
 
-//function creating HTML elements
-
-const createHTML = (html) => {
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  return div.firstChild;
-};
-
 console.log(parsedJSON);
 
-const conversationContainer = document.querySelector(".conversation");
+let conversationContainer = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  conversationContainer = document.querySelector(".conversation");
+});
 
 parsedJSON.forEach((element, index) => {
   setTimeout(() => {
@@ -26,3 +22,11 @@ parsedJSON.forEach((element, index) => {
     conversationContainer.appendChild(createdElement);
   }, index * 500);
 });
+
+//function creating HTML elements
+
+const createHTML = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.firstChild;
+};
