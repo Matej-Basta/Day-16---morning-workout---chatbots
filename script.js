@@ -15,12 +15,14 @@ console.log(parsedJSON);
 
 const conversationContainer = document.querySelector(".conversation");
 
-parsedJSON.forEach((element) => {
-  const text = `<div class="message message--${element.side}">
+parsedJSON.forEach((element, index) => {
+  setTimeout(() => {
+    const text = `<div class="message message--${element.side}">
             <div class="message__text">
                 ${element.text}
             </div>
         </div>`;
-  const createdElement = createHTML(text);
-  conversationContainer.appendChild(createdElement);
+    const createdElement = createHTML(text);
+    conversationContainer.appendChild(createdElement);
+  }, index * 500);
 });
